@@ -1,0 +1,2 @@
+START          5 STOP         6 STEP         6,
+AFS S_50 MAXSAMPLES 50 SAMPLING ALL NORMAL;
