@@ -27,7 +27,7 @@ while(x<=rows)
    fprintf(fOut, '        <real>50</real>\n');
    fprintf(fOut, '        <imag>0</imag>\n');
    fprintf(fOut, '      </impedance>\n');
-   fprintf(fOut, ['      <calibration_group_ref ref="',num2str(x),'" />\n']);
+   fprintf(fOut, ['      <calibration_group_ref ref="1" />\n']);
    fprintf(fOut, '    </port>\n');
     x=x+1;
 end
