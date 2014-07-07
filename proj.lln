@@ -1,7 +1,0 @@
-BEGIN_SUBSTRATE
-0 top
-1 __SubstrateLayer1
-END_SUBSTRATE
-BEGIN_MASK
-1 cond
-END_MASK
