@@ -1,7 +1,18 @@
 function [ matr ] = drawLens( inputMatrix, unitWidth, portLocations )
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
-
+%drawLens converts the binary matrix to a bitmap of black for metal, white
+%for non-metal, and red for ports (with metal)
+%
+%Author: Blake R. Marshall - bmarshall651@gmail.com
+%Date: July 6, 2014
+%The Propagation Group at Georgia Institute of Technology
+%
+%@param inputMatrix MxN binary matrix for metal and non metal
+%@param unitWidth is the geometric length and width of each cell in
+%inputMatrix
+%@param portLocations is the location of all the ports listed as: [x1 y1; x2
+%y2; x3 y3;]
+%
+%@return matr is the bitmap of the matrix
 matr=~repmat(inputMatrix,[1,1,3]);
 
 
