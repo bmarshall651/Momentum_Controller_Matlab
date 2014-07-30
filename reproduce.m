@@ -43,11 +43,7 @@ while(temper<=numOfMutations)
 end
 
 %Ensure that port locations have metal connections to excite
-p=1;
-while(p<=size(portLocations,1))
-    child(portLocations(p,1),portLocations(p,2))=1;
-    p=p+1;
-end
+child=adjustLensForPorts(child,portLocations);
 
 end
 

@@ -1,4 +1,4 @@
-function [ Sparams ] = simulatePopulation( pop, portLocations, unitWidth ,folderName)
+function [ Sparams ] = simulatePopulation( pop, portLocations, unitWidth, startFreq, stopFreq, stepFreq, folderName)
 %simulatedPopulation runs Agilent ADS Momentum for all members of the
 %population with given paramters
 %
@@ -18,9 +18,9 @@ x=1;
 
 %Run Agilent ADS Momentum for each member
 while(x<=size(pop,3))
-    buildLensFiles(pop(:,:,x),unitWidth,portLocations, folderName); %builds netlist files for MOM
+    buildLensFiles(pop(:,:,x),unitWidth,portLocations, startFreq, stopFreq, stepFreq, folderName); %builds netlist files for MOM
     runMOM(folderName); %calls MOM to run netlist files
-    Sparams(:,:,x)=interpretSingleFreqCTI('proj.cti'); %interprets file to Matlab
+    Sparams(:,:,:,x)=interpretCTItoSparam('proj.cti'); %interprets file to Matlab
     x=x+1;
 end
 

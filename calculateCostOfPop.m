@@ -14,8 +14,8 @@ function [ costs ] = calculateCostOfPop( SparamsOfPop, idealS, weighting )
 %
 %@return costs is a vector of all the costs of the population
 x=1;
-while(x<=size(SparamsOfPop,3))
-    costs(x)=calculateSparamCost(SparamsOfPop(:,:,x),idealS,weighting);
+while(x<=size(SparamsOfPop,4))
+    costs(x)=calculateSparamCostMagPhase(SparamsOfPop(:,:,:,x),idealS,weighting);
     x=x+1;
 end
 

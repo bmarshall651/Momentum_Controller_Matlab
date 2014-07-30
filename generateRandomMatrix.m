@@ -17,12 +17,7 @@ function [ randomMatrix ] = generateRandomMatrix( M,N, portLocations )
 a=rand(M,N);
 randomMatrix=round(a);
 
-%Ensures 1 for each port location
-p=1;
-while(p<=size(portLocations,1))
-    randomMatrix(portLocations(p,1),portLocations(p,2))=1;
-    p=p+1;
-end
+randomMatrix=adjustLensForPorts(randomMatrix,portLocations);
 
 end
 

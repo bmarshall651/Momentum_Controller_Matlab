@@ -9,8 +9,9 @@ function [ newPopulation ] = buildNewGeneration( pop, Sparams, Sideal, costWeigh
 %@param pop is the previous population used MxNxpopSize matrix
 %@param Sparams is the S-paramters of each member
 %@param Sideal is the ideal S-parameters for a member
-%@param costWeighting is the weighting on each S-paramter in the cost
-%function
+%@param costWeighting is the weighting on each S-paramter in the form of
+%mag and phase of each starting with S11, S12,... S21, S22... [mag phase;
+%magphase;]
 %@param killPercent is the percent of the population to be killed.
 %@param mutationPercent is the percent of matrices cells that may randomly
 %being negated
