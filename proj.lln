@@ -1,6 +1,6 @@
 BEGIN_SUBSTRATE
-1 __SubstrateLayer1
 0 __TOP
+1 __SubstrateLayer1
 END_SUBSTRATE
 BEGIN_MASK
 1 cond
