@@ -3,7 +3,7 @@
                   ------ MOMENTUM STATISTICS (MW mode) ------
 
               Momentum MomEngine_64 11.40.482 (*) built: Dec  2 2014
-                           Sun Aug 21 16:38:10 2016
+                           Mon Sep 05 17:31:38 2016
 
 ==============================================================================
 
@@ -13,9 +13,9 @@
 SUBSTRATE GENERATION
 ------------------------------------------------------------------------------
 
- Physical memory :    19.29 MB
- Virtual memory  :    10.06 MB
- Page faults     :        5199
+ Physical memory :    19.22 MB
+ Virtual memory  :    10.03 MB
+ Page faults     :        5182
  User Time       :    0h 0m 2s
  Elapsed Time    :    0h 0m10s
 

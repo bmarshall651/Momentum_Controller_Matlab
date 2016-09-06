@@ -49,8 +49,8 @@ portEmptyBorderCells=4; %Make it even
 %%
 %%Solver Parameters
 %Solver
-startFreq=5.6;
-stopFreq=6.0;
+startFreq=1;
+stopFreq=10;
 stepFreq=0.2;
 
 optimizer='sequential';
@@ -69,8 +69,8 @@ totalCycles=10;
 startCostFreq=5.8;
 stopCostFreq=5.8;
 
-Sideal=repmat([0 1*exp(j*pi/2); ...
-    1*exp(j*pi/2) 0;],...
+Sideal=repmat([0 1*exp(-j*pi/2); ...
+    1*exp(-j*pi/2) 0;],...
     [1 1 floor((stopFreq-startFreq)/stepFreq)+1]);
 weighting=[0 1; ...
     0 0;];
@@ -132,20 +132,37 @@ porMatrix(:,:,1)=myBestGuess;
 cost(1)=calculateSparamCost(Sparams, Sideal, freqRange, weighting, ...
     useMagCost, usePhaseCost, startCostFreq, stopCostFreq);
 
-
+indOf58GHz=25; %hardcoded bc im lazy
 curHistInd=1;
-bestMag=abs(Sparams(:,:,:,curHistInd));
-bestPhase=angle(Sparams(:,:,:,curHistInd));
+bestMag=abs(Sparams(:,:,indOf58GHz,curHistInd));
+bestPhase=angle(Sparams(:,:,indOf58GHz,curHistInd));
 
 disp(['Generation: ', num2str(0)])
 disp(['Simulation: ', num2str(curHistInd)])
 disp(['Best Cost: ', num2str(cost(curHistInd))])
 disp('Best S-parameter Magnitude: ')
-10*log10(abs(Sparams(:,:,floor((stopFreq-startFreq)/stepFreq)+1,curHistInd)))
+10*log10(abs(Sparams(:,:,indOf58GHz,curHistInd)))
 disp('Best S-parameter Phase: ')
-(180/pi)*angle(Sparams(:,:,floor((stopFreq-startFreq)/stepFreq)+1,curHistInd))
+(180/pi)*angle(Sparams(:,:,indOf58GHz,curHistInd))
 
 
+figure(2)
+plot(freqRange,reshape(10.*log10(abs(Sparams(1,2,:))),size(Sparams,3),1,1), ...
+    freqRange,reshape(10.*log10(abs(Sparams(1,1,:))),size(Sparams,3),1,1),'r--', ...
+    'LineWidth', 2)
+xlabel('Frequency (GHz)')
+ylabel('dB')
+legend('|S21|', '|S11|')
+title('Control Simulation of Microstrip Magnitudes')
+
+figure(3)
+plot(freqRange,reshape((180/pi)*angle(Sparams(1,2,:)),size(Sparams,3),1,1), ...
+    freqRange,reshape((180/pi)*angle(Sparams(1,1,:)),size(Sparams,3),1,1),'r--', ...
+    'LineWidth', 2)
+xlabel('Frequency (GHz)')
+ylabel('Phase (deg)')
+legend('ang(S21)', 'ang(S11)')
+title('Control Simulation of Microstrip Phases')
 
 % figure(3)
 % plot(freqRange,squeeze(abs(bestSparams(1,1,:))),freqRange, squeeze(abs(Sparams(2,1,:))));
