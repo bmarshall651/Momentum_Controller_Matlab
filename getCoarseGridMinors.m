@@ -4,7 +4,7 @@ function [ myList, coarse] = getCoarseGridMinors( M, N, gridSize, XSym, YSym, ..
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
 if autoCoarseList == 0 && homogenous ==0
-    coarse=gridSize(floor(size(gridSize,2)*(x/totalCycles))+1);
+    coarse=gridSize(ceil(size(gridSize,2)*(x/totalCycles)));
     if mod(M,coarse)+mod(M,coarse)~=0
         myList=transpose(1:M*N);
         disp('!!!ERROR!!! -> The gridSize is not a multiple of the x-dim or the y-dim... we should probably fix this');
@@ -27,12 +27,25 @@ else
 end
 
 
+if XSym ==1 && YSym==0
+    xlim=N/2;
+    ylim=M;
+elseif XSym==0 && YSym==1
+    xlim=N;
+    ylim=M/2;
+elseif XSym==1 && YSym==1
+    xlim=N/2;
+    ylim=M/2;
+else
+    xlim=N;
+    ylim=M;
+end
 
 x=1;
 y=1;
 count=1;
-while x < N/2 && x+coarse-1<=N/2
-    while y < M/2 && y+coarse-1<=M/2
+while x < xlim && x+coarse-1<=xlim
+    while y < ylim && y+coarse-1<=ylim
         temp=1;
         za=1;
         zb=1;
@@ -48,7 +61,10 @@ while x < N/2 && x+coarse-1<=N/2
                 %Grab the minor
                 curMinor=myList(count,1)+(za-1)+(zb-1)*N;
                 %Find x and y values
-                yGuess=floor(curMinor/N)+1;
+                
+                
+                %yGuess=floor(curMinor/N)+1;
+                yGuess=ceil(curMinor/N);
                 xGuess=curMinor-((yGuess-1)*N);
                 %Find symetry values
                 
@@ -58,11 +74,16 @@ while x < N/2 && x+coarse-1<=N/2
                     temp=temp+1;
                 end
                 if YSym ==1
+                   
+                    %Debug
                     ySym=M-yGuess+1;
                     myList(count,temp)=xGuess+(ySym-1)*N;
                     temp=temp+1;
+                  
+                  
+                    
                 end
-                if XSym && YSym ==1
+                if XSym==1 && YSym ==1
                     myList(count,temp)=xSym+(ySym-1)*N;
                     temp=temp+1;
                 end

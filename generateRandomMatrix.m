@@ -1,4 +1,4 @@
-function [ randomMatrix ] = generateRandomMatrix(M,N, portMinors, portMetalOrAir, portWidth, percMetal, symAboutY, symAboutX)
+function [ randomMatrix ] = generateRandomMatrix(M,N, portMinors, portMetalOrAir, percMetal, symAboutY, symAboutX)
 %generateRandomMatrix creates a random binary MxN matrix and ensures that
 %there is  1 at each port location.
 %
@@ -37,7 +37,7 @@ else
     a=rand(M,N)<percMetal;
 end
 
-randomMatrix=adjustLensForPorts(a,portMinors,portMetalOrAir, portWidth);
+randomMatrix=adjustLensForPorts(a,portMinors,portMetalOrAir);
 
 end
 

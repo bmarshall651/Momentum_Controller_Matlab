@@ -10,7 +10,7 @@
         <purpose>-1</purpose>
         <point>
           <x>0</x>
-          <y>0.002035</y>
+          <y>0.0085315</y>
         </point>
       </shape>
     </layout>
@@ -23,8 +23,36 @@
         <layer>1</layer>
         <purpose>-1</purpose>
         <point>
-          <x>0.0074</x>
-          <y>0.002035</y>
+          <x>0</x>
+          <y>0.0028815</y>
+        </point>
+      </shape>
+    </layout>
+  </pin>
+  <pin>
+    <name>P3</name>
+    <net>P3</net>
+    <layout>
+      <shape>
+        <layer>1</layer>
+        <purpose>-1</purpose>
+        <point>
+          <x>0.01695</x>
+          <y>0.0085315</y>
+        </point>
+      </shape>
+    </layout>
+  </pin>
+  <pin>
+    <name>P4</name>
+    <net>P4</net>
+    <layout>
+      <shape>
+        <layer>1</layer>
+        <purpose>-1</purpose>
+        <point>
+          <x>0.01695</x>
+          <y>0.0028815</y>
         </point>
       </shape>
     </layout>

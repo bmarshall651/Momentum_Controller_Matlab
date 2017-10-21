@@ -1,4 +1,4 @@
-function [ S ] = interpretSingleFreqCTI( ctifile )
+function [ S ] = interpretCTItoSparam( ctifile )
 %UNTITLED11 Summary of this function goes here
 %   Detailed explanation goes here
 

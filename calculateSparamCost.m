@@ -20,8 +20,8 @@ disp('Calculating the cost of the S-params')
 [messb, b]=min(abs(freq-stopCostFreq));
 W=repmat(weighting,[1,1,b-a+1]);
 
-magDiff=abs(W.*abs(Sactual(:,:,a:b))-abs(Sideal(:,:,a:b))); %finds the difference between S-parameters
-phaseDiff=abs(W.*angle(Sactual(:,:,a:b))-angle(Sideal(:,:,a:b)));
+%magDiff=abs(W.*abs(Sactual(:,:,a:b))-abs(Sideal(:,:,a:b))); %finds the difference between S-parameters
+%phaseDiff=abs(W.*angle(Sactual(:,:,a:b))-angle(Sideal(:,:,a:b)));
 
 % magDiff=abs(W.*abs(Sactual(:,:,a:b))-abs(Sideal(:,:,a:b))); %finds the difference between S-parameters
 % phaseDiff=abs(W.*angle(Sactual(:,:,a:b))-angle(Sideal(:,:,a:b)));
@@ -36,20 +36,20 @@ phaseDiff=abs(W.*angle(Sactual(:,:,a:b))-angle(Sideal(:,:,a:b)));
 %     (angle(Sideal(1,4,a:b))-angle(Sideal(2,4,a:b))));
 % phaseDiff=phaseDiff1+phaseDiff2+phaseDiff3+phaseDiff4;
 
-if(useMagInCost==1 && usePhaseInCost==0)
-    avgNormCostValue=100*sum(sum(sum(magDiff)))/(b-a+1) ...
-        /(size(Sideal,2)^2);
-     avgNormMagCostValue=0;
-    avgNormPhaseCostValue=0;
-elseif(useMagInCost==0&&usePhaseInCost==1)
-    avgNormCostValue=100*sum(sum(sum(phaseDiff)))/(b-a+1) ...
-        /(size(Sideal,2)^2);
-    avgNormMagCostValue=0;
-    avgNormPhaseCostValue=0;
-elseif(useMagInCost==1&&usePhaseInCost==1)
+% if(useMagInCost==1 && usePhaseInCost==0)
+%     avgNormCostValue=100*sum(sum(sum(magDiff)))/(b-a+1) ...
+%         /(size(Sideal,2)^2);
+%      avgNormMagCostValue=0;
+%     avgNormPhaseCostValue=0;
+% elseif(useMagInCost==0&&usePhaseInCost==1)
+%     avgNormCostValue=100*sum(sum(sum(phaseDiff)))/(b-a+1) ...
+%         /(size(Sideal,2)^2);
+%     avgNormMagCostValue=0;
+%     avgNormPhaseCostValue=0;
+%elseif(useMagInCost==1&&usePhaseInCost==1)
     Scost=W.*(Sactual(:,:,a:b)-Sideal(:,:,a:b));
    magnitized=sqrt(Scost.*conj(Scost));
-  cost=sum(sum(magnitized(:,:,1)));
+  cost=sum(sum(sum(magnitized(:,:,:))))/(b-a+1);
     
 %     avgNormMagCostValue=1.2*sum(sum(sum(magDiff)))/(b-a+1) ...
 %         /(size(Sideal,2)^2);
@@ -58,11 +58,11 @@ elseif(useMagInCost==1&&usePhaseInCost==1)
 % %    avgNormPhaseCostValue=100*sum(phaseDiff)/(b-a+1) ...
 % %         /pi;
 %     avgNormCostValue=(avgNormMagCostValue+avgNormPhaseCostValue)/2;
-else
-    disp('Error - Must use either magnitude or phase for cost function');
-     avgNormMagCostValue=0;
-    avgNormPhaseCostValue=0;
-end
+% else
+%     disp('Error - Must use either magnitude or phase for cost function');
+%      avgNormMagCostValue=0;
+%     avgNormPhaseCostValue=0;
+% end
 
 end
 

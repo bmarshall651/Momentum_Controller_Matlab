@@ -8,9 +8,9 @@ function [ matr ] = drawLens( inputMatrix, unitWidth, portLocations, portWidth )
 %
 %@param inputMatrix MxN binary matrix for metal and non metal
 %@param unitWidth is the geometric length and width of each cell in
-%inputMatrix
 %@param portLocations is the location of all the ports listed as: [x1 y1; x2
 %y2; x3 y3;]
+%@param portWidth is the width of the ports in number of cells
 %
 %@return matr is the bitmap of the matrix
 

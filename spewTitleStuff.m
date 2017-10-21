@@ -1,8 +1,23 @@
 function [] = spewTitleStuff(sys, totalCycles, Sideal, weighting )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%spewTitlestuff summarizes basic information to the Command Window
+%
+% spewTitleStuff(sys, totalCycles, Sideal, weighting )
+%
+% This function just outputs the settings for the optimization.
+%
+% Inputs:
+% sys = DOS or UNIX system
+% totalCycles = total number of generations the optimizer will run
+% Sideal = ideal scattering matrix to find
+% weighting = how the cost function is weighted
+%
+% Examples:
+% spewTitleStuff(0,20,[0 1; 1 0;], [1 1; 1 1;])
+% UNIX system with 20 generations to find a microstrip using all S-params
+% in the cost function
+
 disp('=================================================');
-disp('  Geometric Lens Analyzer for Microwaves (GLAM)  ');
+disp('  Geometric Lens Optimizer for Microwaves (GLOM)  ');
 disp('          Written by: Blake Marshall             ');
 disp('       The Propagation Group at Georgia Tech     ');
 disp('                  2016                           ');

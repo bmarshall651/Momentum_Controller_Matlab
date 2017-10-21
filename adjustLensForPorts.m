@@ -1,4 +1,4 @@
-function [ matrix ] = adjustLensForPorts( matrix, portMinors, portMetalOrAir, portWidth )
+function [ matrix ] = adjustLensForPorts( matrix, portMinors, portMetalOrAir )
 %adjustLensForPort ensures that there is metal at each port location with
 %non-metal on either side to prevent errors in MOM simulation with
 %electrical connections to other ports
@@ -10,8 +10,11 @@ function [ matrix ] = adjustLensForPorts( matrix, portMinors, portMetalOrAir, po
 %@param matrix is the original matrix
 %@param portLocations is the location of all the ports listed as: [x1 y1; x2
 %y2; x3 y3;]
+%@param portMetalOrAir template of the port metal or air via a 1-D spatial
+%array with 1 for metal and 0 for air
 %
-%@return randomMatrix is the resulting binary MxN matrix
+%
+%@return matrix is the same matrix passed in with cleaned up ports
 
 
 metalMinorsTemp=portMinors.*portMetalOrAir;
